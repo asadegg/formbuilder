@@ -13,7 +13,6 @@
                 :useDragHandle="true"
                 @sort-end="onSortEnd($event)"
             >
-                    <button @click="showref">xxxxx</button>
                 <SortableItem
                     :class="['ui-draggable',{'ui-dragbox-outlined':item.editing}]"
                     v-for="(item,index) in snipsData"
@@ -94,8 +93,6 @@ export default {
                     id: 0,
                     name: "titleSnip",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "什么什么活动报名表",
                         help: "请如实填写，如有弄虚作假取消参与资格。"
@@ -105,8 +102,6 @@ export default {
                     id: 1,
                     name: "textInput",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "姓名",
                         placeholder: "",
@@ -117,8 +112,6 @@ export default {
                     id: 2,
                     name: "textInput",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "生日",
                         placeholder: "",
@@ -129,8 +122,6 @@ export default {
                     id: 3,
                     name: "inlineCheckboxes",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "性别",
                         options: ["男", "女", "其他"]
@@ -140,8 +131,6 @@ export default {
                     id: 4,
                     name: "addressSelector",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "地址",
                         help: "二到四个汉字"
@@ -151,8 +140,6 @@ export default {
                     id: 5,
                     name: "starRating",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "个人业务能力",
                         rateValue: "0",
@@ -163,8 +150,6 @@ export default {
                     id: 6,
                     name: "textareaSnip",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "评价",
                         placeholder:
@@ -177,8 +162,6 @@ export default {
                     id: 7,
                     name: "buttonSnip",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "",
                         button: "提交",
@@ -191,8 +174,6 @@ export default {
                     id: 0,
                     name: "titleSnip",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "title",
                         help: "help"
@@ -202,24 +183,20 @@ export default {
                     id: 1,
                     name: "textInput",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "textInput",
-                        placeholder: "",
-                        help: "zzz"
+                        placeholder: "input",
+                        help: "zzz1"
                     }
                 },
                 {
                     id: 2,
                     name: "textInput",
                     editing: false,
-                    absoluteX: false,
-                    positionY: 0,
                     setting: {
                         label: "textInput2",
-                        placeholder: "",
-                        help: "zzzxxx"
+                        placeholder: "input",
+                        help: "zzzxxx2"
                     }
                 }
             ],
@@ -250,8 +227,9 @@ export default {
             console.log(this.$refs)
         },
         checkSnip(index) {
-            // this.snipsData[this.checkIndex].editing = false;
-            this.snipsData[this.checkIndex + 1].editing = false;
+            if(this.snipsData[this.checkIndex + 1]){
+                this.snipsData[this.checkIndex + 1].editing = false;
+            }
             this.snipsData[this.checkIndex].editing=false;
             this.checkIndex = index;
             this.snipsData[index].editing = !this.snipsData[index].editing;
@@ -342,8 +320,6 @@ export default {
                             JSON.stringify(this.addData[index])
                         );
                         snipData.editing = false;
-                        snipData.absoluteX = false;
-                        snipData.positionY = 0;
                     }
                 });
                 this.snipsData.splice(
